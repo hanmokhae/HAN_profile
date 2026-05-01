@@ -3,396 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>한덕환 프로필 - 이제는 좋아하는 것만 하는 사람</title>
-    <!-- SEO 및 메타 태그 -->
-    <meta name="description" content="small N잡러 한덕환의 온라인 명함 및 자기소개 랜딩페이지입니다. 유튜브작가, AI컨설턴트, 길여행가, 프리랜서강사로 활동 중입니다.">
+    <title>한덕환 | small N잡러 온라인 명함</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap');
-
         :root {
-            --primary-color: #1F3864; /* 네이비 */
-            --bg-color: #FFFFFF;      /* 흰색 */
-            --text-color: #333333;    /* 짙은 회색 */
-            --sub-bg: #F4F7FA;        /* 연한 배경색 */
+            --navy: #1F3864;
+            --white: #FFFFFF;
+            --dark-gray: #333333;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            word-break: keep-all;
-        }
-
-        .container {
-            max-width: 480px;
-            margin: 0 auto;
-            min-height: 100vh;
+            font-family: 'Outfit', 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--dark-gray);
             display: flex;
-            flex-direction: column;
-            position: relative;
+            justify-content: center;
+            min-height: 100vh;
         }
 
-        /* Hero Background */
-        .hero-bg {
+        .card {
             width: 100%;
-            height: 200px;
-            background-image: url('forest_background.png');
-            background-size: cover;
-            background-position: center;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
+            max-width: 480px;
+            background: var(--white);
+            position: relative;
+            padding-bottom: 50px;
         }
 
-        /* Content Area */
-        .content {
-            padding: 140px 24px 40px; /* Top padding to accommodate background and profile pic */
+        /* Forest Background with SVG Trees (Only Navy & White) */
+        .forest-bg {
+            height: 220px;
+            background-color: var(--navy);
             position: relative;
-            z-index: 2;
+            overflow: hidden;
+        }
+
+        .forest-bg::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M250 800 L500 200 L750 800 Z M50 900 L250 500 L450 900 Z M650 950 L850 450 L1050 950 Z' /%3E%3C/svg%3E");
+            background-size: cover;
+        }
+
+        .profile-section {
+            margin-top: -110px; /* profile image top 50% overlaps forest bg */
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-
-        /* Profile Section */
-        .profile-header {
+            padding: 0 30px;
             text-align: center;
-            margin-bottom: 30px;
-            width: 100%;
-        }
-
-        .profile-img-container {
-            position: relative;
-            margin-bottom: 20px;
         }
 
         .profile-img {
-            width: 140px;
-            height: 140px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
+            border: 8px solid var(--white);
             object-fit: cover;
-            border: 4px solid var(--bg-color); /* 흰색 테두리로 배경과 구분 */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            background-color: white;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+            z-index: 2;
         }
 
-        .name-wrapper {
+        /* Name and Job Section */
+        .name-row {
             display: flex;
             align-items: baseline;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             margin-bottom: 8px;
+            width: 100%;
         }
 
-        .n-job-label {
+        .tag {
             font-size: 1rem;
-            color: var(--text-color);
-            font-weight: 400;
+            color: var(--dark-gray);
         }
 
         .name {
-            font-size: 2rem; /* 본문의 2배 */
+            font-size: 2rem;
             font-weight: 700;
-            color: var(--primary-color);
-            letter-spacing: -0.02em;
+            color: var(--navy);
         }
 
         .jobs {
-            font-size: 1rem; /* 본문과 동일 */
-            font-weight: 400;
-            color: var(--text-color);
-            margin-bottom: 12px;
+            font-size: 1rem;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+            line-height: 1.4;
         }
 
-        .motto {
-            font-size: 1.1rem;
-            color: var(--primary-color);
-            font-weight: 700; /* Bold */
-            background: var(--sub-bg);
-            padding: 10px 24px;
-            border-radius: 30px;
-            display: inline-block;
+        .tagline {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--navy);
+            margin-bottom: 35px;
+        }
+
+        /* Career History */
+        .career-container {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .career-item {
+            font-size: 1rem;
             margin-bottom: 10px;
+            line-height: 1.5;
+            display: flex;
+            gap: 8px;
         }
 
-        /* Section Styling */
-        section {
-            width: 100%;
-            margin-top: 30px;
+        .career-item span {
+            font-weight: 700;
+            color: var(--navy);
+            flex-shrink: 0;
         }
 
-        .section-title {
+        .past-highlight {
+            font-weight: 700;
             font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 16px;
-            border-left: 4px solid var(--primary-color);
-            padding-left: 10px;
+            color: var(--navy);
+            margin: 30px 0 10px;
         }
 
-        .section-title.bold {
-            font-weight: 700;
+        .past-summary {
+            font-size: 1rem;
+            color: var(--dark-gray);
+            line-height: 1.5;
         }
 
-        .exp-list {
-            list-style: none;
-        }
-
-        .exp-item {
-            padding: 12px 16px;
-            background: var(--sub-bg);
-            border-radius: 12px;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        /* Action Buttons */
-        .action-group {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-            margin-top: 24px;
-        }
-
-        .btn {
+        /* Action Button */
+        .email-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 18px;
-            border-radius: 16px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
             width: 100%;
+            padding: 16px;
+            background-color: var(--navy);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 30px;
+            transition: opacity 0.2s;
         }
 
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-            box-shadow: 0 4px 12px rgba(31, 56, 100, 0.2);
-        }
-
-        .btn-primary:active {
-            transform: scale(0.98);
+        .email-btn:hover {
             opacity: 0.9;
         }
 
-        .btn-outline {
-            background-color: white;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-
-        .btn-outline:active {
-            transform: scale(0.98);
-            background-color: var(--sub-bg);
-        }
-
+        /* Social Links */
         .social-links {
-            width: 100%;
-            margin-top: 24px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
             gap: 12px;
+            width: 100%;
         }
 
         .social-link {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding: 14px;
-            background: var(--sub-bg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 20px;
+            border: 1px solid #eee;
             border-radius: 12px;
-            text-align: center;
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
             transition: background 0.2s;
         }
 
         .social-link:hover {
-            background: #E8EDF2;
+            background-color: #f9f9f9;
         }
 
-        /* QR Code Section */
-        .qr-section {
-            margin-top: 40px;
-            text-align: center;
-            padding: 24px;
-            background: var(--sub-bg);
-            border-radius: 24px;
-            width: 100%;
-        }
-
-        .qr-title {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 16px;
-        }
-
-        .qr-code {
-            width: 130px;
-            height: 130px;
-            background: white;
-            padding: 10px;
-            border-radius: 12px;
-            margin: 0 auto;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .qr-code img {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        /* Toast message */
-        #toast {
-            visibility: hidden;
-            min-width: 250px;
-            background-color: var(--primary-color);
-            color: #fff;
-            text-align: center;
-            border-radius: 12px;
-            padding: 16px;
-            position: fixed;
-            z-index: 100;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        #toast.show {
-            visibility: visible;
-            animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        }
-
-        @keyframes fadein {
-            from {bottom: 0; opacity: 0;}
-            to {bottom: 40px; opacity: 1;}
-        }
-
-        @keyframes fadeout {
-            from {bottom: 40px; opacity: 1;}
-            to {bottom: 0; opacity: 0;}
-        }
-
-        @media (max-width: 360px) {
-            .name { font-size: 1.8rem; }
-            .content { padding: 130px 16px 30px; }
+        @media (max-width: 480px) {
+            .card {
+                box-shadow: none;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Forest Background Header -->
-        <div class="hero-bg"></div>
+    <div class="card">
+        <!-- Forest Background Section (Navy) -->
+        <div class="forest-bg"></div>
 
-        <div class="content">
-            <!-- Profile Section -->
-            <header class="profile-header">
-                <div class="profile-img-container">
-                    <img src="profile_image.jpg" alt="한덕환 프로필 사진" class="profile-img">
-                </div>
-                <div class="name-wrapper">
-                    <span class="n-job-label">small N잡러</span>
-                    <h1 class="name">한덕환</h1>
-                </div>
-                <p class="jobs">유튜브작가 / Ai컨설턴트 / 길여행가 / 프리랜서강사</p>
-                <div class="motto">《이제는,좋아하는 것만 하는 사람》</div>
-            </header>
+        <div class="profile-section">
+            <!-- Profile Image (User provided) -->
+            <img src="hanmokhae%20photo.jpg" alt="한덕환 프로필" class="profile-img">
 
-            <!-- Experience Section -->
-            <section>
-                <h2 class="section-title">현직 및 최근 경력</h2>
-                <ul class="exp-list">
-                    <li class="exp-item">현.유튜브작가@혼자걷다보면 [2025 서울 인플루언서 100인]</li>
-                    <li class="exp-item">현.전문강사(서울시/기업/공기관)</li>
-                    <li class="exp-item">현.길여행강사(길해설가1급)</li>
-                    <li class="exp-item">현.AI컨설턴트</li>
-                    <li class="exp-item">현.브런치작가/투빈대디</li>
-                    <li class="exp-item">전.국립공원안전산행지원단</li>
-                    <li class="exp-item">전.구로구청 청년일자리 멘토</li>
-                    <li class="exp-item">전.소상공인 온라인홍보마케터</li>
-                </ul>
-            </section>
+            <!-- Name Line -->
+            <div class="name-row">
+                <span class="tag">small N잡러</span>
+                <h1 class="name">한덕환</h1>
+            </div>
 
-            <!-- Past Career -->
-            <section>
-                <h2 class="section-title bold">《그전엔.직장인 30년》</h2>
-                <ul class="exp-list">
-                    <li class="exp-item">큰기업근무 15년. 작은기업경영 15년</li>
-                </ul>
-            </section>
+            <!-- Jobs Line -->
+            <p class="jobs">유튜브작가/Ai컨설터트/길여행가/프리랜서강사</p>
 
-            <!-- Action Buttons -->
-            <div class="action-group">
-                <a href="mailto:hanmokhae@gmail.com" class="btn btn-primary">
-                    이메일 보내기
-                </a>
-                <button onclick="copyPhone()" class="btn btn-outline">
-                    전화번호 복사하기
-                </button>
+            <!-- Tagline Line (Bold) -->
+            <p class="tagline">《이제는.좋아하는 것만 하는 사람》</p>
+
+            <!-- Career History -->
+            <div class="career-container">
+                <div class="career-item"><span>현.</span> 유튜브작가/@혼자걷다보면 [2025 서울 인플루언서 100인]</div>
+                <div class="career-item"><span>현.</span> 전문강사(서울시/기업/공기관)</div>
+                <div class="career-item"><span>현.</span> 길여행강사(길해설가1급)</div>
+                <div class="career-item"><span>현.</span> AI컨설턴트</div>
+                <div class="career-item"><span>현.</span> 브런치작가/투빈대디</div>
+                <div class="career-item"><span>전.</span> 국립공원안전산행지원단</div>
+                <div class="career-item"><span>전.</span> 구로구청 청년일자리 멘토</div>
+                <div class="career-item"><span>전.</span> 소상공인 온라인홍보마케터</div>
+
+                <div class="past-highlight">《그전엔.직장인 30년》</div>
+                <p class="past-summary">큰기업근무 15년. 작은기업경영 15년</p>
             </div>
 
             <!-- Social Links -->
             <div class="social-links">
-                <a href="https://youtube.com/@혼자걷다보면" target="_blank" class="social-link">유튜브 @혼자걷다보면</a>
-                <a href="https://brunch.co.kr/@2beendaddy" target="_blank" class="social-link">브런치 (투빈대디)</a>
+                <a href="https://youtube.com/@혼자걷다보면" target="_blank" class="social-link">
+                    <span>유튜브@혼자걷다보면</span>
+                    <span>&rarr;</span>
+                </a>
+                <a href="https://brunch.co.kr/@2beendaddy" target="_blank" class="social-link">
+                    <span>브런치(투빈대디)</span>
+                    <span>&rarr;</span>
+                </a>
             </div>
 
-            <!-- QR Code -->
-            <div class="qr-section">
-                <h3 class="qr-title">온라인 명함 QR 코드</h3>
-                <div class="qr-code">
-                    <img id="qrImage" src="" alt="QR Code">
-                </div>
-            </div>
+            <!-- Email Communication Button -->
+            <a href="mailto:hanmokhae@gmail.com" class="email-btn">이메일 소통</a>
         </div>
     </div>
 
-    <!-- Toast for clipboard feedback -->
-    <div id="toast">전화번호가 복사되었습니다.</div>
-
-    <script>
-        function copyPhone() {
-            const phoneNumber = '010-3280-4309';
-            navigator.clipboard.writeText(phoneNumber).then(() => {
-                showToast();
-            }).catch(err => {
-                console.error('복사 실패:', err);
-                alert('전화번호: ' + phoneNumber);
-            });
-        }
-
-        function showToast() {
-            const toast = document.getElementById("toast");
-            toast.className = "show";
-            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
-        }
-
-        // Generate QR Code
-        window.onload = function() {
-            const qrUrl = 'https://m.site.naver.com/25YMN';
-            const qrImg = document.getElementById('qrImage');
-            qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrUrl)}`;
-        };
-    </script>
 </body>
 </html>
